@@ -32,15 +32,23 @@ class PenyakitController extends Controller
   
   public function store(Request $request)
   {
-    if(!$request->penyakit){
-      return redirect('/admin/penyakit/tambah')->with('status', 'data harus diisi.');
+    $request->validate([
+      'penyakit'  => 'required',
+      'solusi'    => 'required',
+    ], [
+      'penyakit.required' => 'Penyakit harus diisi.',
+      'solusi.required'   => 'Solusi harus diisi.',
+    ]);
+
+    if($this->penyakit->where('penyakit', $request->penyakit)->first()){
+      return redirect()->back()->with('status', 'Penyakit sudah ada.');
     }else{
       $this->penyakit->penyakit = $request->penyakit;
-    $this->penyakit->solusi = $request->solusi;
+      $this->penyakit->solusi = $request->solusi;
 
-    $this->penyakit->save();
+      $this->penyakit->save();
 
-    return redirect('/admin/penyakit')->with('status', 'Berhasil tambah penyakit.');
+      return redirect('/admin/penyakit')->with('status', 'Berhasil tambah penyakit.');
     }
 
   }
@@ -55,14 +63,27 @@ class PenyakitController extends Controller
 
   public function update(Request $request, $id)
   {
-    $penyakit_baru = $this->penyakit->find($id);
+    $request->validate([
+      'penyakit'  => 'required',
+      'solusi'    => 'required',
+    ], [
+      'penyakit.required' => 'Penyakit harus diisi.',
+      'solusi.required'   => 'Solusi harus diisi.',
+    ]);
+    
+    if($this->penyakit->where('penyakit', $request->penyakit)){
+      return redirect()->back()->with('status', 'Penyakit sudah ada.');
+    }else{
 
-    $penyakit_baru->penyakit  = $request->penyakit;
-    $penyakit_baru->solusi    = $request->solusi;
-
-    $penyakit_baru->save();
-
-    return redirect('/admin/penyakit')->with('status', 'Berhasil edit penyakit.');
+      $penyakit_baru = $this->penyakit->find($id);
+  
+      $penyakit_baru->penyakit  = $request->penyakit;
+      $penyakit_baru->solusi    = $request->solusi;
+  
+      $penyakit_baru->save();
+  
+      return redirect('/admin/penyakit')->with('status', 'Berhasil edit penyakit.');
+    }
   }
   
   public function destroy($id)

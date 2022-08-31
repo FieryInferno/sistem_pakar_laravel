@@ -11,8 +11,8 @@
                   <h3 class="card-title">Data  Diagnosis</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                  <a href="relasi/tambah" class="btn btn-success mb-1">Tambah Diagnosis Baru</a>
+                <div class="card-body" style="background: url({{asset('/image/user2.png')}});">
+                  <a href="relasi/tambah" class="btn mb-1" style="background-color: #7EA6BF;">Tambah Diagnosis Baru</a>
                   @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ session('status') }}
@@ -24,11 +24,11 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>No</th>
-                        <th>Penyakit</th>
-                        <th>Gejala</th>
-                        <th>Solusi</th>
-                        <th>Action</th>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 10%;">Penyakit</th>
+                        <th style="width: 10%;">Gejala</th>
+                        <th style="width: 40%;">Solusi</th>
+                        <th style="width: 35%;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -44,8 +44,8 @@
                           </td>
                           <td>{{ $key->penyakit->solusi }}</td>
                           <td>
-                            <a class="btn btn-primary" href="/admin/relasi/edit/{{ $key->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $key->id }}">
+                            <a class="btn" style="background-color: #83C75C;" href="/admin/relasi/edit/{{ $key->id }}">Edit</a>
+                            <button type="button" class="btn" style="background-color: #ED7075;" data-toggle="modal" data-target="#hapus{{ $key->id }}">
                               Hapus
                             </button>
 
@@ -63,11 +63,11 @@
                                     Anda yakin akan menghapus data Diagnosis dengan nama {{ $key->relasi }}?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn"  style="background-color: #BBBBBB;" data-dismiss="modal">Close</button>
                                     <form action="/admin/relasi/hapus/{{ $key->id }}" method="post">
                                       @csrf
                                       @method('DELETE')
-                                      <button class="btn btn-danger" type="submit">Hapus</button>
+                                      <button class="btn" style="background-color: #ED7075;" type="submit">Hapus</button>
                                     </form>
                                   </div>
                                 </div>

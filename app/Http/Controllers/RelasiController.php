@@ -53,9 +53,17 @@ class RelasiController extends Controller
   
   public function store(Request $request)
   {
-    if(!$request->gejala){
-      return redirect('/admin/relasi/tambah')->with('status', 'data harus diisi.');
-    }else{
+    $request->validate([
+      'penyakit_id' => 'required',
+      'gejala'      => 'required',
+    ], [
+      'penyakit_id.required'  => 'Penyakit harus diisi.',
+      'gejala.required'       => 'Gejala harus diisi.',
+    ]);
+
+    if($this->relasi->where('penyakit_id', $request->penyakit_id)){
+      return redirect()->back()->with('status', 'Penyakit sudah ada.');
+    } else {
       $this->relasi->penyakit_id  = $request->penyakit_id;
       $this->relasi->gejala       = json_encode($request->gejala);
   
@@ -78,14 +86,26 @@ class RelasiController extends Controller
 
   public function update(Request $request, $id)
   {
-    $relasi_baru = $this->relasi->find($id);
+    $request->validate([
+      'penyakit_id' => 'required',
+      'gejala'      => 'required',
+    ], [
+      'penyakit_id.required'  => 'Penyakit harus diisi.',
+      'gejala.required'       => 'Gejala harus diisi.',
+    ]);
 
-    $relasi_baru->penyakit_id  = $request->penyakit_id;
-    $relasi_baru->gejala       = json_encode($request->gejala);
-
-    $relasi_baru->save();
-
-    return redirect('/admin/relasi')->with('status', 'Berhasil edit diagnosis.');
+    if($this->relasi->where('penyakit_id', $request->penyakit_id)){
+      return redirect()->back()->with('status', 'Penyakit sudah ada.');
+    } else {
+      $relasi_baru = $this->relasi->find($id);
+  
+      $relasi_baru->penyakit_id  = $request->penyakit_id;
+      $relasi_baru->gejala       = json_encode($request->gejala);
+  
+      $relasi_baru->save();
+  
+      return redirect('/admin/relasi')->with('status', 'Berhasil edit diagnosis.');
+    }
   }
   
   public function destroy($id)

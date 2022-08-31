@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>SistemPakar | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,23 +14,37 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte') }}/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="background: background: rgb(8,101,125);
-background: linear-gradient(0deg, rgba(8,101,125,1) 0%, rgba(10,18,77,1) 100%);70%);">
+<body class="hold-transition login-page"  style="background: url({{asset('/image/laut.png')}});">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('adminlte') }}/index2.html" class="text-white"><b>SISTEM PAKAR</b></a>
+    <a href="{{ asset('adminlte') }}/index2.html" class="text-white">
+    <div class="col-10"> 
+    <img src="/image/ikan.png" alt="logo" style="width: 100px; height: 90px;">
+    <br> 
+    <b>Sign In</b></a>
+</div>
   </div>
   <!-- /.login-logo -->
-  <div class="card">
+ 
     @if (session('status'))
     <div class="alert alert-danger">
         {{ session('status') }}
     </div>
 @endif
-    <div class="card-body login-card-body">
-      <form action="{{ route('login') }}" method="post">
+
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+    <form action="{{ route('login') }}" method="post">
         @csrf
-        <div class="input-group mb-3">
+         <label class="text-white" for="inputEmailAddress">Username</label>
+        <div class="input-group mb-3 col-10">
           <input type="text" class="form-control" placeholder="Username" name="username">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -38,7 +52,8 @@ background: linear-gradient(0deg, rgba(8,101,125,1) 0%, rgba(10,18,77,1) 100%);7
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <label class="text-white" for="inputEmailAddress">Password</label>
+        <div class="input-group mb-1 col-10">
           <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -47,11 +62,13 @@ background: linear-gradient(0deg, rgba(8,101,125,1) 0%, rgba(10,18,77,1) 100%);7
           </div>
         </div>
         <div class="row">
-          <div class="col-8"></div>
+          <div class="col-10"></div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
- 
+          <br>
+          <div class="col-10">
+            <div class="text-white" >
+            <button type="submit" class="btn  btn-block" style="background-color: #99bfc6;">Sign In</button>
+ </div>
           </div>
           <!-- /.col -->
         </div>

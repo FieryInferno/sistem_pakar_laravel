@@ -11,28 +11,51 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-            <h3>{{$penyakit}}</h3>
-            <p>Data Penyakit</p>
+              <h3>{{$penyakit}}</h3>
+              <p>Data Penyakit</p>
             </div>
             <div class="icon">
-            <i class="ion ion-bag"></i>
+              <i class="ion ion-bag"></i>
             </div>
             <a href="/admin/penyakit" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-            </div>
+          </div>
         </div>
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-            <h3>{{$gejala}}</h3>
-            <p>Data Gejala</p>
+              <h3>{{$gejala}}</h3>
+              <p>Data Gejala</p>
             </div>
             <div class="icon">
-            <i class="ion ion-bag"></i>
+              <i class="ion ion-bag"></i>
             </div>
-            <a href="/admin/gejala" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/admin/gejala" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{$relasi}}</h3>
+              <p>Data Diagnosis </p>
             </div>
+
+            <div class="icon">
+              <i class="ion ion-bag"></i>
             </div>
+            <a href="/admin/relasi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{$komentars}}</h3>
+              <p>Data Komentar</p>
+            </div>
+           <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="/admin/komentar" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
         </div>
       </div>
     </div><!-- /.container-fluid -->

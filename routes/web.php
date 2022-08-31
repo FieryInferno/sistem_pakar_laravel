@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KomentarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/welcome', [App\Http\Controllers\LoginController::class, 'welcome']);
 
-Route::get('/', [App\Http\Controllers\LoginController::class, 'welcome']);
+Route::get('/', function () {
+  return view('landing');
+});
 Route::post('/cek_penyakit', [App\Http\Controllers\LoginController::class, 'cekPenyakit']);
+Route::post('/komentar', [App\Http\Controllers\KomentarController::class, 'store']);
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->middleware('guest')->name('log');
+Route::get('/hasil', [App\Http\Controllers\LoginController::class, 'hasil'])->middleware('guest');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'store'])->middleware('guest')->name('login');
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->middleware('auth');
 Route::middleware('auth')->group(function () {
@@ -47,6 +53,11 @@ Route::middleware('auth')->group(function () {
       Route::get('/edit/{id}', [App\Http\Controllers\RelasiController::class, 'edit']);
       Route::put('/edit/{id}', [App\Http\Controllers\RelasiController::class, 'update']);
       Route::delete('/hapus/{id}', [App\Http\Controllers\RelasiController::class, 'destroy']);
+    });
+
+    Route::prefix('komentar')->group(function () {
+      Route::get('/', [App\Http\Controllers\KomentarController::class, 'index']);
+      Route::delete('/hapus/{id}', [App\Http\Controllers\KomentarController::class, 'destroy']);
     });
   });
 });

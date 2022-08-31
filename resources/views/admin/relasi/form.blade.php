@@ -6,11 +6,20 @@
           {{ session('status') }}
       </div>
   @endif
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
-              <div class="card-header">
+            <div class="card" >
+              <div class="card-header" >
                 <h3 class="card-title">{{ $mode === 'edit' ? 'Edit' : 'Tambah' }} Diagnosis</h3>
               </div>
               <!-- /.card-header -->
@@ -18,7 +27,7 @@
                 @csrf
                 {{ $mode === 'edit' ? method_field('PUT') : '' }}
                 <div class="card-body">
-                  <div class="col-md-6">
+                  <div class="col-md-6" style="background: url({{asset('/image/user2.png')}});">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Penyakit</label>
                       <select name="penyakit_id" id="penyakit" class="form-control">
@@ -87,7 +96,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Tambah</button>
+                  <button type="submit" class="btn" style="background-color: #7EA6BF;"  >Tambah</button>
                 </div>
               </form>
               <!-- /.card-body -->

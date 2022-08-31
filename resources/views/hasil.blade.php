@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>SistemPakar | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,43 +30,79 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="/image/ikan.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="margin-left: 0px;">
+  <nav class="main-header navbar navbar-expand navbar-lightblue navbar-light" style="margin-left: 0px;">
+  
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/login" class="nav-link">Login</a>
+        
       </li>
     </ul>
   </nav>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <form action="/" method="post">
-            <div class="card-body">
+    <div class="row" >
+      <div class="col-12" style="background: url({{asset('/image/user.png')}});">
+        
+            <div class="card-body" >
               <?php
                 if ($hasil) { ?>
-                  <div class="col-md-6">
-                    <div class="form-group">
+                  <div class="col-md-6 pull-left" >
+                    <div class="form-group" >
                       <label for="">Penyakit</label>
+                      
                       <input type="text" class="form-control" disabled value="<?= $hasil->penyakit->penyakit; ?>">
-                    </div>
+                    </div> 
                     <div class="form-group">
                       <label for="">Solusi</label>
                       <textarea name="" id="" cols="30" rows="10" disabled class="form-control"><?= $hasil->penyakit->solusi; ?></textarea>
                     </div>
                   </div>
-                <?php }
-              ?>
+                <?php } else { ?>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-ban"></i> MAAF!</h5>
+                        Penyakit belum dapat terdiagnosa 
+                      </div>
+                    </div>
+                  </div>
+                <?php }?>
+              <form action="/komentar" method="post">
+                @csrf
+                @if ($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
+                <div class="col-md-6 pull-right">
+                  <div class="form-group">
+                    <label for="">Nama</label>
+                    <input type="text" name="nama" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Komentar</label>
+                    <textarea class="form-control" name="komentar"rows="3"></textarea>
+                  </div>
+                  <div class="card-footer">
+                  <button type="submit" class="btn" style="background-color: #c4ddde";>Kirim</button>
+              </div>
+              </div>
             </div>
             <div class="card-footer">
-              <a href="/" class="btn btn-success">Cek Penyakit</a>
+              <a href="/" class="btn" style="background-color: #99bfc6";>Cek Penyakit</a>
             </div>
           </form>
+
+
           <!-- /.card-body -->
         </div>
         <!-- /.card -->

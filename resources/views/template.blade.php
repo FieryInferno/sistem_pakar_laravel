@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>SistemPakar | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,14 +30,14 @@
   <div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="/image/ikan.png" alt="Ikan Hias" height="60" width="60">
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand " style="background-color: #C4DDDE" ; >
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" >
         <li class="nav-item">
           <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
             <i class="fas fa-th-large"></i>
@@ -48,14 +48,14 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-info elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <span class="brand-text font-weight-light">Sistem Pakar</span>
+      <a href="index3.html" class="brand-link" style="background-color: #3D6176;>
+        <span class="brand-text font-weight-navy" >Sistem Pakar</span>
       </a>
 
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar" style="background-color: #3D6176;">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -79,9 +79,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/admin/relasi" class="nav-link <?= $active === "relasi" ? "active" : ""; ?>">
+              <a href="/admin/relasi" class="nav-link <?= $active === "relasi/" ? "active" : ""; ?>">
                 <i class="nav-icon fas fa-th"></i>
                 <p>Diagnosis</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/komentar" class="nav-link <?= $active === "komentar" ? "active" : ""; ?>">
+                <i class="nav-icon fas fa-th"></i>
+                <p>Komentar</p>
               </a>
             </li>
             <li class="nav-item">
@@ -98,18 +104,18 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" >
       <!-- Content Header (Page header) -->
-      <div class="content-header">
+      <div class="content-header" >
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              
             </div><!-- /.col -->
-            <div class="col-sm-6">
+            <div class="col-sm-6" >
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                
+                <li class="breadcrumb-item active">SistemPakar</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->

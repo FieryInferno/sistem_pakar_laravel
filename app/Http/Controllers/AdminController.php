@@ -10,6 +10,8 @@ class AdminController extends Controller
   {
     $penyakit = DB::table('penyakit')->count();
     $gejala = DB::table('gejala')->count();
-    return view('admin/index', ['active' => 'dashboard','penyakit'=>$penyakit,'gejala'=>$gejala]);
+    $relasi = DB::table('relasi')->count();
+    $komentars = DB::table('komentars')->count();
+    return view('admin/index', ['active' => 'dashboard','penyakit'=>$penyakit,'gejala'=>$gejala, 'relasi'=>$relasi,'komentars'=>$komentars]);
   }
 }

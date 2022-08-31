@@ -1,18 +1,18 @@
-@extends('template')
+\@extends('template')
 @section('konten')
   <section class="content">
-    <div class="container-fluid">
-      <section class="content">
-        <div class="container-fluid">
+    <div class="container-fluid" >
+      <section class="content" >
+        <div class="container-fluid" >
           <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Data Gejala</h3>
+            <div class="col-12" >
+              <div class="card" >
+                <div class="card-header" >
+                  <h3 class="card-title " >Data Gejala</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                  <a href="gejala/tambah" class="btn btn-success mb-1">Tambah Gejala Baru</a>
+                <div class="card-body" style="background: url({{asset('/image/user2.png')}});">
+                  <a href="gejala/tambah" class="btn mb-1"  style="background-color: #7EA6BF;">Tambah Gejala Baru</a>
                   @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ session('status') }}
@@ -36,8 +36,8 @@
                           <td>{{ $no++ }}</td>
                           <td>{{ $key->gejala }}</td>
                           <td>
-                            <a class="btn btn-primary" href="/admin/gejala/edit/{{ $key->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{ $key->id }}">
+                            <a class="btn" style="background-color: #83C75C;" href="/admin/gejala/edit/{{ $key->id }}">Edit</a>
+                            <button type="button" class="btn"  style="background-color: #ED7075;" data-toggle="modal" data-target="#hapus{{ $key->id }}">
                               Hapus
                             </button>
 
@@ -55,11 +55,11 @@
                                     Anda yakin akan menghapus data gejala dengan nama {{ $key->gejala }}?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn" data-dismiss="modal"  style="background-color: #BBBBBB;">Close</button>
                                     <form action="/admin/gejala/hapus/{{ $key->id }}" method="post">
                                       @csrf
                                       @method('DELETE')
-                                      <button class="btn btn-danger" type="submit">Hapus</button>
+                                      <button class="btn" style="background-color: #ED7075;" type="submit">Hapus</button>
                                     </form>
                                   </div>
                                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2022 at 05:53 PM
+-- Generation Time: May 27, 2022 at 02:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -58,6 +58,29 @@ INSERT INTO `gejala` (`id`, `gejala`, `created_at`, `updated_at`) VALUES
 (1, 'gejala 1', NULL, NULL),
 (2, 'gejala 2', '2022-03-25 21:42:22', '2022-03-25 21:42:22'),
 (4, 'gejala 11', '2022-03-27 08:49:05', '2022-03-27 08:49:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentars`
+--
+
+CREATE TABLE `komentars` (
+  `id` bigint(20) NOT NULL,
+  `nama` varchar(191) NOT NULL,
+  `komentar` text NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `komentars`
+--
+
+INSERT INTO `komentars` (`id`, `nama`, `komentar`, `updated_at`, `created_at`) VALUES
+(1, 'Test', 'test', '2022-05-27 05:48:16', '2022-05-27 05:48:16'),
+(2, 'Test1', 'test1', '2022-05-27 05:48:31', '2022-05-27 05:48:31'),
+(3, 'Test2', 'test2', '2022-05-27 05:48:54', '2022-05-27 05:48:54');
 
 -- --------------------------------------------------------
 
@@ -198,6 +221,12 @@ ALTER TABLE `gejala`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `komentars`
+--
+ALTER TABLE `komentars`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -251,6 +280,12 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `gejala`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `komentars`
+--
+ALTER TABLE `komentars`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`

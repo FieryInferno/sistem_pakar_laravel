@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>SistemPakar | Dashboard</title>
+  
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,73 +31,78 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="/image/ikan.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="margin-left: 0px;">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/login" class="nav-link">Login</a>
-      </li>
-    </ul>
+   
   </nav>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <form action="/cek_penyakit" method="post">
+  <div class="container-fluid" >
+    <div class="card">
+      <div class="row"  style="background: url({{asset('/image/user.png')}});" >
+        
+        <div class="col-6" >
+          <form action="/cek_penyakit" method="post" >
             @csrf
-            <div class="card-body">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Daftar Gejala</label>
-                  <!-- <table id="example2" class="table table-bordered table-striped" width="100%"> -->
-                  <table class="table table-bordered table-striped" width="100%">
-                    <thead>
-                      <tr>
-                        <th width="5%">#</th>
-                        <th width="95%">Nama Gejala</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($gejala as $key)
-                        <tr>
-                          <td>
-                            <div class='form-check'>
-                              <input class='form-check-input' type='checkbox' value='<?= $key->id ?>' id='defaultCheck1' name='gejala[]'>
-                            </div>
-                          </td>
-                          <td><?= $key["gejala"]; ?></td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>#</th>
-                        <th>Nama Gejala</th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Komentar</label>
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
+            @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+            <div class="card-body" >
+              <div class="form-group"  >
+                
+                <label for="">Daftar Gejala</label>
+                <!-- <table id="example2" class="table table-bordered table-striped" width="100%"> -->
+                <table id="example2" class="table table-bordered table-striped" width="100%">
+                  
+                  <thead>
+                    <tr>
+                      <th width="5%">#</th>
+                      <th width="95%">Nama Gejala</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    @foreach ($gejala as $key)
+                      <tr>
+                        <td>
+                          <div class='form-check'>
+                            <input class='form-check-input' type='checkbox' value='<?= $key->id ?>' id='defaultCheck1' name='gejala[]'>
+                          </div>
+                        </td>
+                        <td><?= $key["gejala"]; ?></td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                  <tfoot>
+                    
+                    <tr>
+                      <th>#</th>
+                      <th>Nama Gejala</th>
+                    </tr>
+                  </tfoot>
+                  
+                </table>
+                <button type="submit" class="btn" style="background-color: #99bfc6";>Cek Penyakit</button>
               </div>
             </div>
-            <div class="card-footer">
-              <button type="submit" class="btn btn-success">Cek Penyakit</button>
-            </div>
+          
+              
           </form>
-          <!-- /.card-body -->
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col -->
+      <!-- /.card-body -->
     </div>
   </div>
 

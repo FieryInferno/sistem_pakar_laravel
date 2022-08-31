@@ -9,6 +9,15 @@
             {{ session('status') }}
         </div>
     @endif
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -19,7 +28,7 @@
               <form action="/admin/penyakit/{{ $mode === 'edit' ? 'edit/' . $id : 'tambah' }}" method="post">
                 @csrf
                 {{ $mode === 'edit' ? method_field('PUT') : '' }}
-                <div class="card-body">
+                <div class="card-body" style="background: url({{asset('/image/user2.png')}});">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Penyakit</label>
@@ -32,7 +41,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success">{{ $mode === 'edit' ? 'Edit' : 'Tambah' }}</button>
+                  <button type="submit" class="btn" style="background-color: #7EA6BF;">{{ $mode === 'edit' ? 'Edit' : 'Tambah' }}</button>
                 </div>
               </form>
               <!-- /.card-body -->
